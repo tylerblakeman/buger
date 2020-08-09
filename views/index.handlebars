@@ -4,12 +4,11 @@
       <ul>
         {{#each burger}}
         {{#unless devoured}}
-          <li>
-            {{burger_name}}
-            <button class="eatme" data-id={{id}} data-devoured="{{devoured}}">
+            <li class="w-400">{{burger_name}}
+            </li>
+            <button class="eatme mb-5" data-id={{id}} data-devoured="{{devoured}}">
               EAT THIS BURGER!
             </button>
-          </li>
         {{/unless}}
         {{/each}}
       </ul>
@@ -27,9 +26,11 @@
       </ul>
     </div>
   </div>
-  <div class="add-burger">
+  <div class="container">
+  <div class="add-burger row">
     <label for="adding-burger">Add Your Burger:</label>
     <input type="text" id="addburger" name="burger">
     <button type="submit" class="btn btn-success" id="submitburger">Submit</button>
+  </div>
   </div>
 </div>

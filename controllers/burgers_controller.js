@@ -15,4 +15,24 @@ router.get("/", function(req,res){
     });
 });
 
+//api route for adding burgers
+router.post("/api/burgers", function (req, res){
+  burgers.insertOne(["burger_name"], [req.body.name], function(result){
+    res.json({id: result.insertId})
+  })
+})
+
+//api route for updating the devooured state
+router.put("/api/burgers/:id", function (req, res) {
+  var condition = `id =  ${req.params.id}`;
+  burgers.updateOne(
+    {
+      devoured: true,
+    },
+    condition,
+    function (result) {
+      res.json(result);
+    }
+  );
+});
 module.exports = router;

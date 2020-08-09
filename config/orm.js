@@ -41,28 +41,28 @@ var orm = {
 		});
 	},
 
-	//inserting a new burger
-	insertOne: function (tableInput, cols, vals, cb) {
-		var queryString = `INSERT INTO  ${tableInput} (${cols.toString()}) VALUES (${printQuestionMarks})`;
-		console.log(queryString);
-		connection.query(queryString, function (err, result) {
-			if (err) {
-				throw err;
-			}
-			cb(result);
-		});
-	},
+  insertOne: function (tableInput, cols, vals, cb) {
+    var queryString = `INSERT INTO ${tableInput} (${cols.toString()}) VALUES (${printQuestionMarks(vals.length)}) `;
 
+    console.log(queryString);
+
+    connection.query(queryString, vals, function (err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  },
+  
 	updateOne: function (tableInput, vals, condition, cb) {
-		var queryString = `UPDATE ${tableInput} SET ${objToSql(
-			vals
-		)} WHERE ${condition}`;
+		var queryString = `UPDATE ${tableInput} SET ${objToSql(vals)} WHERE ${condition}`;
 		console.log(queryString);
 		connection.query(queryString, function (err, res) {
 			if (err) {
 				throw err;
 			}
-			cb(result);
+			cb(res);
 		});
 	},
 };
