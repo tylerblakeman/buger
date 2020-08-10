@@ -7,7 +7,7 @@ $(document).ready(function (){
     var newBurger = {
       name: $("#addburger").val().trim()
     }
-    alert(newBurger.name)
+    // alert(newBurger.name)
     //post request to insert burger
     $.ajax("/api/burgers", {
       type: "POST",
